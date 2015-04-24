@@ -21,6 +21,8 @@ module.exports = (filePath, content={}, callback)->
         return
     if content.sugar? and content.sugar
         chain = chain.sugar()
+    if content.yaml? and content.yaml
+        chain = chain.yaml()
     chain.template filePath, content
          .post content.post, content
          .ready (e, out)->
