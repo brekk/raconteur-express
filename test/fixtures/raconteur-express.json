@@ -1,8 +1,8 @@
 {
     "endpoints": [
-        ["/", "index", "/index.md"],
-        ["/post", "post", "/post.md"],
-        ["/summary", "post-summary", "/summary.md"],
-        ["/hero", "post-hero", "/hero.md"]
+        ["/", "index", "index.md"],
+        ["/post", "post", "post.md"],
+        ["/summary", "post-summary", "summary.md"],
+        ["/hero", "post-hero", "hero.md"]
     ]
 }

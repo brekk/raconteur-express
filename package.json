@@ -9,7 +9,9 @@
     "clean-build": "rm -rf ./lib",
     "create": "npm run create-lib",
     "create-lib": "(mkdir ./lib || true)",
-    "convert": "./node_modules/.bin/coffee --compile --output ./lib/ src/coffee/",
+    "convert": "npm run convert-coffee && npm run convert-test",
+    "convert-coffee": "./node_modules/.bin/coffee --compile --output ./lib/ src/coffee/",
+    "convert-test": "./node_modules/.bin/coffee --compile --output ./test/ src/coffee/test",
     "test": "npm run build && ./node_modules/.bin/mocha --reporter spec",
     "prepublish": "npm run build"
   },
@@ -30,5 +32,11 @@
     "lodash": "^3.7.0",
     "parkplace": "^0.1.0",
     "promised-io": "^0.3.5"
+  },
+  "devDependencies": {
+    "express": "^4.12.3",
+    "mocha": "^2.2.4",
+    "should": "^6.0.1",
+    "supertest": "^0.15.0"
   }
 }
