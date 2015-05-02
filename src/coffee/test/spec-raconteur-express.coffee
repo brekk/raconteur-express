@@ -13,21 +13,19 @@
 
         harness = require cwd + '/test/fixtures/raconteur-express.json'
 
-        postPath = (path)->
-            return cwd + '/posts/' + path
-        templatePath = (path)->
-            return cwd + '/templates/' + path
-
         app = express()
 
-        app.set 'views', cwd + '/templates'
+        app.set 'views', cwd + '/test/fixtures/templates'
         app.engine 'sugar', raconteurExpress
         app.set 'view engine', 'sugar'
+
+        postLocation = (loc)->
+            return cwd + '/test/fixtures/posts/' + loc
 
         renderPathWithTemplateAndPost = (path, template, post, opts)->
             app.get path, (req, res)->
                 options = _.extend {
-                    post: postPath post
+                    post: postLocation post
                     sugar: true
                     yaml: true
                 }, opts
@@ -49,6 +47,7 @@
                                 if err
                                     done err
                                     return
+                                res.should.be.ok
                                 done()
     catch e
         console.log "ERROR DURING TEST", e

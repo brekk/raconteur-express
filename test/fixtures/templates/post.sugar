@@ -1,0 +1,12 @@
+article.post
+    .content
+        .written
+            header
+                h1.title(role="title")|{attributes.title}
+                ul.tags|{#attributes.tags}
+                    li.tag|{.}
+                    {/attributes.tags}
+            .data(role="written-content")|{content|s}
+        footer
+            .meta(data-timestamp="0")
+                .time(role="timestamp")|{attributes.date}
