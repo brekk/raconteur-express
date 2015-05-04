@@ -35,12 +35,21 @@
                     res.send html
 
         _.each harness.endpoints, (args)->
-            console.log ">>>", args
             renderPathWithTemplateAndPost.apply null, args
 
         describe "raconteur-express", ()->
             it "should take a post and a template location and return an html string", (done)->
-                request(app).get('/')
+                request(app).get('/yaml')
+                            .expect('Content-Type', /html/)
+                            .expect(200)
+                            .end (err, res)->
+                                if err
+                                    done err
+                                    return
+                                res.should.be.ok
+                                done()
+            it "should take a post with json-front-matter and a template location and return an html string", (done)->
+                request(app).get('/json')
                             .expect('Content-Type', /html/)
                             .expect(200)
                             .end (err, res)->

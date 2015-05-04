@@ -1,5 +1,8 @@
 {
     "endpoints": [
-        ["/", "post", "index.md"]
+        ["/yaml", "post", "yaml.md"],
+        ["/json", "post", "json.md", {
+            "yaml": false
+        }]
     ]
 }
